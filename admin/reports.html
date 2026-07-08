@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - Connect Faisalabad</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="preloader" style="position:fixed;inset:0;z-index:99999;background:#FAFAF9;display:flex;align-items:center;justify-content:center;transition:opacity 0.6s;"><div style="width:36px;height:36px;border-radius:50%;border:3px solid #E7E5E4;border-top-color:#D97706;animation:spin 0.8s linear infinite;"></div></div>
+
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <i class="fas fa-link"></i>
+    <div><span>Connect Faisalabad</span><small>Admin Panel</small></div>
+  </div>
+  <div class="sidebar-menu">
+    <div class="sidebar-label">Main</div>
+    <a href="index.html" class="sidebar-item"><i class="fas fa-th-large"></i> Dashboard</a>
+    <a href="businesses.html" class="sidebar-item"><i class="fas fa-building"></i> Businesses</a>
+    <a href="categories.html" class="sidebar-item"><i class="fas fa-th-large"></i> Categories</a>
+    <a href="business-owners.html" class="sidebar-item"><i class="fas fa-user-tie"></i> Business Owners</a>
+    <a href="users.html" class="sidebar-item"><i class="fas fa-users"></i> Users</a>
+    <a href="claims.html" class="sidebar-item"><i class="fas fa-file-signature"></i> Business Claims</a>
+    <div class="sidebar-label">Engagement</div>
+    <a href="reviews.html" class="sidebar-item"><i class="fas fa-star"></i> Reviews</a>
+    <a href="reports.html" class="sidebar-item active"><i class="fas fa-flag"></i> Reports</a>
+    <a href="messages.html" class="sidebar-item"><i class="fas fa-envelope"></i> Contact Messages</a>
+    <div class="sidebar-label">Content</div>
+    <a href="advertisements.html" class="sidebar-item"><i class="fas fa-ad"></i> Advertisements</a>
+    <a href="news-blog.html" class="sidebar-item"><i class="fas fa-newspaper"></i> News & Blog</a>
+    <div class="sidebar-label">System</div>
+    <a href="analytics.html" class="sidebar-item"><i class="fas fa-chart-bar"></i> Analytics</a>
+    <a href="settings.html" class="sidebar-item"><i class="fas fa-cog"></i> Settings</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="../index.html" class="sidebar-item"><i class="fas fa-external-link-alt"></i> View Website</a>
+    <a href="../index.html" class="sidebar-item" style="color:#DC2626;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</div>
+
+<header class="header">
+  <div class="header-left">
+    <button class="header-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+    <h1 class="header-title">Reports</h1>
+    <div class="header-search"><i class="fas fa-search"></i><input type="text" placeholder="Search businesses, users..."></div>
+  </div>
+  <div class="header-right">
+    <span class="header-date" id="currentDate"></span>
+    <div style="position:relative;">
+      <button class="header-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="badge-dot"></span></button>
+      <div class="header-dropdown" id="notifDropdown">
+        <div class="header-dropdown-header"><h6>Notifications</h6><a href="#">Mark all read</a></div>
+        <div class="header-dropdown-body">
+          <div class="header-dropdown-item notif-new"><div class="header-dropdown-item-icon" style="background:rgba(217,119,6,0.1);color:#D97706;"><i class="fas fa-building"></i></div><div class="header-dropdown-item-content"><strong>New Business Listed</strong><p>TechloSet Solutions registered</p><span>2 min ago</span></div></div>
+          <div class="header-dropdown-item notif-new"><div class="header-dropdown-item-icon" style="background:rgba(245,158,11,0.1);color:#F59E0B;"><i class="fas fa-file-signature"></i></div><div class="header-dropdown-item-content"><strong>Claim Request</strong><p>Bundu Khan Restaurant claimed by owner</p><span>15 min ago</span></div></div>
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(220,38,38,0.1);color:#DC2626;"><i class="fas fa-flag"></i></div><div class="header-dropdown-item-content"><strong>Review Reported</strong><p>Inappropriate review flagged</p><span>1 hour ago</span></div></div>
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(14,165,233,0.1);color:#0EA5E9;"><i class="fas fa-envelope"></i></div><div class="header-dropdown-item-content"><strong>New Message</strong><p>Contact form submission</p><span>3 hours ago</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <button class="header-btn" id="msgBtn"><i class="fas fa-envelope"></i><span class="badge-dot"></span></button>
+      <div class="header-dropdown" id="msgDropdown">
+        <div class="header-dropdown-header"><h6>Messages</h6><a href="messages.html">View all</a></div>
+        <div class="header-dropdown-body">
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(217,119,6,0.1);color:#D97706;"><i class="fas fa-user"></i></div><div class="header-dropdown-item-content"><strong>Ahmed Hassan</strong><p>I want to list my business...</p><span>5 min ago</span></div></div>
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(14,165,233,0.1);color:#0EA5E9;"><i class="fas fa-user"></i></div><div class="header-dropdown-item-content"><strong>Fatima Khan</strong><p>Need help with my account...</p><span>1 hour ago</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <a href="profile.html" class="header-profile" id="profileBtn">
+        <div class="header-profile-avatar">A</div>
+        <div class="header-profile-info"><strong>Admin</strong><span>Super Admin</span></div>
+      </a>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html" class="profile-dropdown-item"><i class="fas fa-user"></i> Profile</a>
+        <a href="settings.html" class="profile-dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+        <div class="profile-dropdown-divider"></div>
+        <a href="../index.html" class="profile-dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="main-content">
+
+  <div class="page-header-dash">
+    <div>
+      <h2>Reports</h2>
+      <p>User-submitted reports</p>
+    </div>
+  </div>
+
+  <div class="dash-card">
+    <div class="table-wrapper">
+      <table class="table-dash">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Reported Business</th>
+            <th>Reporter</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="td-small">1</span></td>
+            <td><span class="td-name">TechloSet Solutions</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">MA</div> Muhammad Aslam</div></td>
+            <td>Spam</td>
+            <td><span class="td-small">Jan 15, 2026</span></td>
+            <td><span class="status-badge pending">Pending</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn edit" title="Resolve"><i class="fas fa-check"></i></button>
+                <button class="action-btn delete" title="Dismiss"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" title="Delete Business" style="color:#DC2626;"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="td-small">2</span></td>
+            <td><span class="td-name">Bundu Khan Restaurant</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">FS</div> Fatima Shah</div></td>
+            <td>Incorrect Info</td>
+            <td><span class="td-small">Jan 14, 2026</span></td>
+            <td><span class="status-badge pending">Pending</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn edit" title="Resolve"><i class="fas fa-check"></i></button>
+                <button class="action-btn delete" title="Dismiss"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" title="Delete Business" style="color:#DC2626;"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="td-small">3</span></td>
+            <td><span class="td-name">Allied Hospital</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">TM</div> Tariq Mehmood</div></td>
+            <td>Duplicate</td>
+            <td><span class="td-small">Jan 12, 2026</span></td>
+            <td><span class="status-badge resolved">Resolved</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn edit" title="Resolve"><i class="fas fa-check"></i></button>
+                <button class="action-btn delete" title="Dismiss"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" title="Delete Business" style="color:#DC2626;"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="td-small">4</span></td>
+            <td><span class="td-name">Kohinoor City</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">SK</div> Sanaullah Khan</div></td>
+            <td>Fake Business</td>
+            <td><span class="td-small">Jan 10, 2026</span></td>
+            <td><span class="status-badge pending">Pending</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn edit" title="Resolve"><i class="fas fa-check"></i></button>
+                <button class="action-btn delete" title="Dismiss"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" title="Delete Business" style="color:#DC2626;"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="td-small">5</span></td>
+            <td><span class="td-name">Government College University Faisalabad</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">UA</div> Usman Ali</div></td>
+            <td>Wrong Phone</td>
+            <td><span class="td-small">Jan 09, 2026</span></td>
+            <td><span class="status-badge resolved">Resolved</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn edit" title="Resolve"><i class="fas fa-check"></i></button>
+                <button class="action-btn delete" title="Dismiss"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" title="Delete Business" style="color:#DC2626;"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="td-small">6</span></td>
+            <td><span class="td-name">The Mall Faisalabad</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">OF</div> Omar Farooq</div></td>
+            <td>Incorrect Info</td>
+            <td><span class="td-small">Jan 07, 2026</span></td>
+            <td><span class="status-badge draft">Dismissed</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn edit" title="Resolve"><i class="fas fa-check"></i></button>
+                <button class="action-btn delete" title="Dismiss"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" title="Delete Business" style="color:#DC2626;"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/admin.js"></script>
+<script>
+window.addEventListener('load',function(){document.getElementById('preloader').style.opacity='0';setTimeout(function(){document.getElementById('preloader').style.display='none'},600)});
+</script>
+</body>
+</html>

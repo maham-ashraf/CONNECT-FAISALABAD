@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics - Connect Faisalabad</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="css/admin.css" rel="stylesheet">
+  <style>
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    @media (max-width: 991.98px) { .chart-grid { grid-template-columns: 1fr; } }
+    .chart-card { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: var(--admin-radius); }
+    .chart-card-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--admin-border); }
+    .chart-card-header h5 { font-size: 0.95rem; font-weight: 600; margin: 0; }
+    .chart-card-body { padding: 20px; }
+    .chart-wrapper { display: flex; align-items: flex-end; justify-content: center; gap: 10px; height: 220px; padding: 10px 0; }
+    .chart-col { display: flex; flex-direction: column; align-items: center; flex: 1; max-width: 32px; }
+    .chart-bar { width: 20px; border-radius: 4px 4px 0 0; background: linear-gradient(to top, #D97706, #FBBF24); transition: var(--transition); min-height: 6px; }
+    .chart-bar:hover { opacity: 0.8; transform: scaleX(1.1); }
+    .chart-bar-sm { width: 14px; }
+    .chart-label { font-size: 0.62rem; color: var(--admin-text-muted); text-align: center; margin-top: 6px; }
+    .analytics-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    @media (max-width: 991.98px) { .analytics-row { grid-template-columns: 1fr; } }
+    .cat-list { list-style: none; margin: 0; padding: 0; }
+    .cat-list li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--admin-border); font-size: 0.82rem; }
+    .cat-list li:last-child { border-bottom: none; }
+    .cat-list li span:first-child { font-weight: 500; color: var(--admin-text); }
+    .cat-list li span:last-child { color: var(--admin-text-muted); font-size: 0.78rem; }
+    .mini-table-sm td:first-child { font-weight: 600; color: var(--admin-text); }
+  </style>
+</head>
+<body>
+
+<div id="preloader" style="position:fixed;inset:0;z-index:99999;background:#FAFAF9;display:flex;align-items:center;justify-content:center;transition:opacity 0.6s;"><div style="width:36px;height:36px;border-radius:50%;border:3px solid #E7E5E4;border-top-color:#D97706;animation:spin 0.8s linear infinite;"></div></div>
+
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <i class="fas fa-link"></i>
+    <div><span>Connect Faisalabad</span><small>Admin Panel</small></div>
+  </div>
+  <div class="sidebar-menu">
+    <div class="sidebar-label">Main</div>
+    <a href="index.html" class="sidebar-item"><i class="fas fa-th-large"></i> Dashboard</a>
+    <a href="businesses.html" class="sidebar-item"><i class="fas fa-building"></i> Businesses</a>
+    <a href="categories.html" class="sidebar-item"><i class="fas fa-th-large"></i> Categories</a>
+    <a href="business-owners.html" class="sidebar-item"><i class="fas fa-user-tie"></i> Business Owners</a>
+    <a href="users.html" class="sidebar-item"><i class="fas fa-users"></i> Users</a>
+    <a href="claims.html" class="sidebar-item"><i class="fas fa-file-signature"></i> Business Claims</a>
+    <div class="sidebar-label">Engagement</div>
+    <a href="reviews.html" class="sidebar-item"><i class="fas fa-star"></i> Reviews</a>
+    <a href="reports.html" class="sidebar-item"><i class="fas fa-flag"></i> Reports</a>
+    <a href="messages.html" class="sidebar-item"><i class="fas fa-envelope"></i> Contact Messages</a>
+    <div class="sidebar-label">Content</div>
+    <a href="advertisements.html" class="sidebar-item"><i class="fas fa-ad"></i> Advertisements</a>
+    <a href="news-blog.html" class="sidebar-item"><i class="fas fa-newspaper"></i> News & Blog</a>
+    <div class="sidebar-label">System</div>
+    <a href="analytics.html" class="sidebar-item active"><i class="fas fa-chart-bar"></i> Analytics</a>
+    <a href="settings.html" class="sidebar-item"><i class="fas fa-cog"></i> Settings</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="../index.html" class="sidebar-item"><i class="fas fa-external-link-alt"></i> View Website</a>
+    <a href="../index.html" class="sidebar-item" style="color:#DC2626;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</div>
+
+<header class="header">
+  <div class="header-left">
+    <button class="header-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+    <h1 class="header-title">Analytics</h1>
+    <div class="header-search"><i class="fas fa-search"></i><input type="text" placeholder="Search businesses, users..."></div>
+  </div>
+  <div class="header-right">
+    <span class="header-date" id="currentDate"></span>
+    <div style="position:relative;">
+      <button class="header-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="badge-dot"></span></button>
+      <div class="header-dropdown" id="notifDropdown">
+        <div class="header-dropdown-header"><h6>Notifications</h6><a href="#">Mark all read</a></div>
+        <div class="header-dropdown-body">
+          <div class="header-dropdown-item notif-new"><div class="header-dropdown-item-icon" style="background:rgba(217,119,6,0.1);color:#D97706;"><i class="fas fa-building"></i></div><div class="header-dropdown-item-content"><strong>New Business Listed</strong><p>TechloSet Solutions registered</p><span>2 min ago</span></div></div>
+          <div class="header-dropdown-item notif-new"><div class="header-dropdown-item-icon" style="background:rgba(245,158,11,0.1);color:#F59E0B;"><i class="fas fa-file-signature"></i></div><div class="header-dropdown-item-content"><strong>Claim Request</strong><p>Bundu Khan Restaurant claimed by owner</p><span>15 min ago</span></div></div>
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(220,38,38,0.1);color:#DC2626;"><i class="fas fa-flag"></i></div><div class="header-dropdown-item-content"><strong>Review Reported</strong><p>Inappropriate review flagged</p><span>1 hour ago</span></div></div>
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(14,165,233,0.1);color:#0EA5E9;"><i class="fas fa-envelope"></i></div><div class="header-dropdown-item-content"><strong>New Message</strong><p>Contact form submission</p><span>3 hours ago</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <button class="header-btn" id="msgBtn"><i class="fas fa-envelope"></i><span class="badge-dot"></span></button>
+      <div class="header-dropdown" id="msgDropdown">
+        <div class="header-dropdown-header"><h6>Messages</h6><a href="messages.html">View all</a></div>
+        <div class="header-dropdown-body">
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(217,119,6,0.1);color:#D97706;"><i class="fas fa-user"></i></div><div class="header-dropdown-item-content"><strong>Ahmed Hassan</strong><p>I want to list my business...</p><span>5 min ago</span></div></div>
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(14,165,233,0.1);color:#0EA5E9;"><i class="fas fa-user"></i></div><div class="header-dropdown-item-content"><strong>Fatima Khan</strong><p>Need help with my account...</p><span>1 hour ago</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <a href="profile.html" class="header-profile" id="profileBtn">
+        <div class="header-profile-avatar">A</div>
+        <div class="header-profile-info"><strong>Admin</strong><span>Super Admin</span></div>
+      </a>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html" class="profile-dropdown-item"><i class="fas fa-user"></i> Profile</a>
+        <a href="settings.html" class="profile-dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+        <div class="profile-dropdown-divider"></div>
+        <a href="../index.html" class="profile-dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="main-content">
+
+  <div class="page-header-dash">
+    <div>
+      <h2>Analytics</h2>
+      <p>Platform performance overview</p>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon blue"><i class="fas fa-users"></i></div>
+      <div class="stat-body">
+        <span class="stat-label">Total Visitors</span>
+        <div class="stat-value">124,700</div>
+        <div class="stat-trend up"><i class="fas fa-arrow-up"></i> 14.2% this month</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon green"><i class="fas fa-eye"></i></div>
+      <div class="stat-body">
+        <span class="stat-label">Page Views</span>
+        <div class="stat-value">892,400</div>
+        <div class="stat-trend up"><i class="fas fa-arrow-up"></i> 22.7% this month</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon amber"><i class="fas fa-clock"></i></div>
+      <div class="stat-body">
+        <span class="stat-label">Avg Session</span>
+        <div class="stat-value">3m 42s</div>
+        <div class="stat-trend up"><i class="fas fa-arrow-up"></i> 8.3% this month</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon red"><i class="fas fa-signal"></i></div>
+      <div class="stat-body">
+        <span class="stat-label">Bounce Rate</span>
+        <div class="stat-value">32.4%</div>
+        <div class="stat-trend down"><i class="fas fa-arrow-down"></i> 2.1% improvement</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h5><i class="fas fa-chart-line" style="color:var(--admin-accent);margin-right:8px;"></i> Monthly Visitor Growth</h5>
+        <span style="font-size:0.75rem;color:var(--admin-text-muted);">Jan - Dec 2026</span>
+      </div>
+      <div class="chart-card-body">
+        <div class="chart-placeholder" style="height:220px;display:flex;align-items:flex-end;justify-content:center;gap:10px;padding:10px 0;">
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:35%;"></div><div class="chart-label">Jan</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:42%;"></div><div class="chart-label">Feb</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:38%;"></div><div class="chart-label">Mar</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:55%;"></div><div class="chart-label">Apr</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:48%;"></div><div class="chart-label">May</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:62%;"></div><div class="chart-label">Jun</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:58%;"></div><div class="chart-label">Jul</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:72%;"></div><div class="chart-label">Aug</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:65%;"></div><div class="chart-label">Sep</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:78%;"></div><div class="chart-label">Oct</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:85%;"></div><div class="chart-label">Nov</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:95%;"></div><div class="chart-label">Dec</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h5><i class="fas fa-store" style="color:var(--admin-accent);margin-right:8px;"></i> Business Registration Trends</h5>
+        <span style="font-size:0.75rem;color:var(--admin-text-muted);">Jan - Dec 2026</span>
+      </div>
+      <div class="chart-card-body">
+        <div class="chart-placeholder" style="height:220px;display:flex;align-items:flex-end;justify-content:center;gap:10px;padding:10px 0;">
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:25%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Jan</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:30%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Feb</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:28%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Mar</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:45%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Apr</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:40%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">May</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:55%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Jun</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:50%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Jul</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:65%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Aug</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:60%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Sep</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:70%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Oct</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:80%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Nov</div></div>
+          <div class="chart-col"><div class="chart-bar chart-bar-sm" style="height:90%;background:linear-gradient(to top,#0891B2,#22D3EE);"></div><div class="chart-label">Dec</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics-row">
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <h5><i class="fas fa-th-large" style="color:var(--admin-accent);margin-right:8px;"></i> Popular Categories</h5>
+        <a href="categories.html">View all</a>
+      </div>
+      <div class="dash-card-body" style="padding:0 20px;">
+        <ul class="cat-list">
+          <li><span>Restaurants &amp; Cafes</span><span>89 businesses</span></li>
+          <li><span>Healthcare &amp; Medical</span><span>62 businesses</span></li>
+          <li><span>Software &amp; IT</span><span>47 businesses</span></li>
+          <li><span>Retail &amp; Shopping</span><span>44 businesses</span></li>
+          <li><span>Education &amp; Training</span><span>38 businesses</span></li>
+          <li><span>Hotels &amp; Travel</span><span>26 businesses</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-header">
+        <h5><i class="fas fa-building" style="color:var(--admin-accent);margin-right:8px;"></i> Recent Registrations</h5>
+        <a href="businesses.html">View all</a>
+      </div>
+      <div class="dash-card-body" style="padding:0;">
+        <div class="table-wrapper">
+          <table class="table-dash mini-table-sm">
+            <thead>
+              <tr><th>Business</th><th>Owner</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="td-name">TechloSet Solutions</td><td>Usman Ali</td><td class="td-small">Today</td></tr>
+              <tr><td class="td-name">Bundu Khan Restaurant</td><td>Fatima Shah</td><td class="td-small">Yesterday</td></tr>
+              <tr><td class="td-name">Aziz Fatimah Hospital</td><td>Hassan Raza</td><td class="td-small">2 days ago</td></tr>
+              <tr><td class="td-name">Nishat Mills Limited</td><td>Noor Ahmad</td><td class="td-small">3 days ago</td></tr>
+              <tr><td class="td-name">University of Agriculture Faisalabad</td><td>Saima Bibi</td><td class="td-small">4 days ago</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/admin.js"></script>
+<script>
+window.addEventListener('load',function(){document.getElementById('preloader').style.opacity='0';setTimeout(function(){document.getElementById('preloader').style.display='none'},600)});
+</script>
+</body>
+</html>

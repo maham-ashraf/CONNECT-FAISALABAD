@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Claims - Connect Faisalabad Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <i class="fas fa-link"></i>
+    <div><span>Connect Faisalabad</span><small>Admin Panel</small></div>
+  </div>
+  <div class="sidebar-menu">
+    <div class="sidebar-label">Main</div>
+    <a href="index.html" class="sidebar-item"><i class="fas fa-th-large"></i> Dashboard</a>
+    <a href="businesses.html" class="sidebar-item"><i class="fas fa-building"></i> Businesses</a>
+    <a href="categories.html" class="sidebar-item"><i class="fas fa-th-large"></i> Categories</a>
+    <a href="business-owners.html" class="sidebar-item"><i class="fas fa-user-tie"></i> Business Owners</a>
+    <a href="users.html" class="sidebar-item"><i class="fas fa-users"></i> Users</a>
+    <a href="claims.html" class="sidebar-item active"><i class="fas fa-file-signature"></i> Business Claims</a>
+    <div class="sidebar-label">Engagement</div>
+    <a href="reviews.html" class="sidebar-item"><i class="fas fa-star"></i> Reviews</a>
+    <a href="reports.html" class="sidebar-item"><i class="fas fa-flag"></i> Reports</a>
+    <a href="messages.html" class="sidebar-item"><i class="fas fa-envelope"></i> Contact Messages</a>
+    <div class="sidebar-label">Content</div>
+    <a href="advertisements.html" class="sidebar-item"><i class="fas fa-ad"></i> Advertisements</a>
+    <a href="news-blog.html" class="sidebar-item"><i class="fas fa-newspaper"></i> News & Blog</a>
+    <div class="sidebar-label">System</div>
+    <a href="analytics.html" class="sidebar-item"><i class="fas fa-chart-bar"></i> Analytics</a>
+    <a href="settings.html" class="sidebar-item"><i class="fas fa-cog"></i> Settings</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="../index.html" class="sidebar-item"><i class="fas fa-external-link-alt"></i> View Website</a>
+    <a href="../index.html" class="sidebar-item" style="color:#DC2626;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</div>
+
+<header class="header">
+  <div class="header-left">
+    <button class="header-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+    <h1 class="header-title">Business Claims</h1>
+    <div class="header-search"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+  </div>
+  <div class="header-right">
+    <span class="header-date" id="currentDate"></span>
+    <div style="position:relative;">
+      <button class="header-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="badge-dot"></span></button>
+      <div class="header-dropdown" id="notifDropdown">
+        <div class="header-dropdown-header"><h6>Notifications</h6><a href="#">Mark all read</a></div>
+        <div class="header-dropdown-body">
+          <div class="header-dropdown-item notif-new"><div class="header-dropdown-item-icon" style="background:rgba(217,119,6,0.1);color:#D97706;"><i class="fas fa-building"></i></div><div class="header-dropdown-item-content"><strong>New Business Listed</strong><p>TechloSet Solutions registered</p><span>2 min ago</span></div></div>
+          <div class="header-dropdown-item notif-new"><div class="header-dropdown-item-icon" style="background:rgba(245,158,11,0.1);color:#F59E0B;"><i class="fas fa-file-signature"></i></div><div class="header-dropdown-item-content"><strong>Claim Request</strong><p>Bundu Khan Restaurant claimed by owner</p><span>15 min ago</span></div></div>
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(220,38,38,0.1);color:#DC2626;"><i class="fas fa-flag"></i></div><div class="header-dropdown-item-content"><strong>Review Reported</strong><p>Inappropriate review flagged</p><span>1 hour ago</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <button class="header-btn" id="msgBtn"><i class="fas fa-envelope"></i><span class="badge-dot"></span></button>
+      <div class="header-dropdown" id="msgDropdown">
+        <div class="header-dropdown-header"><h6>Messages</h6><a href="messages.html">View all</a></div>
+        <div class="header-dropdown-body">
+          <div class="header-dropdown-item"><div class="header-dropdown-item-icon" style="background:rgba(217,119,6,0.1);color:#D97706;"><i class="fas fa-user"></i></div><div class="header-dropdown-item-content"><strong>Ahmed Hassan</strong><p>I want to list my business...</p><span>5 min ago</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <a href="profile.html" class="header-profile" id="profileBtn">
+        <div class="header-profile-avatar">A</div>
+        <div class="header-profile-info"><strong>Admin</strong><span>Super Admin</span></div>
+      </a>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html" class="profile-dropdown-item"><i class="fas fa-user"></i> Profile</a>
+        <a href="settings.html" class="profile-dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+        <div class="profile-dropdown-divider"></div>
+        <a href="../index.html" class="profile-dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="main-content">
+
+  <div class="page-header-dash">
+    <div>
+      <h2>Business Claims</h2>
+      <p>Review business ownership claims</p>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div style="display:flex;align-items:center;background:#FAFAF9;border:1px solid #E7E5E4;border-radius:8px;padding:0 12px;max-width:220px;width:100%;">
+      <i class="fas fa-search" style="color:#78716C;font-size:0.8rem;"></i>
+      <input type="text" id="claimSearch" placeholder="Search claims..." style="background:transparent;border:none;outline:none;padding:8px 10px;font-size:0.82rem;color:#1C1917;width:100%;font-family:'Inter',sans-serif;">
+    </div>
+    <select id="claimStatusFilter" class="form-select-dash" style="max-width:150px;">
+      <option value="">All Status</option>
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+  </div>
+
+  <div class="dash-card">
+    <div class="table-wrapper">
+      <table class="table-dash" id="claimsTable">
+        <thead>
+          <tr>
+            <th style="width:40px;"><input type="checkbox" class="cb-master"></th>
+            <th>#</th>
+            <th>Business Name</th>
+            <th>Claimant Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th style="width:160px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="claimsTableBody">
+          <tr data-claim="Bundu Khan Restaurant">
+            <td><input type="checkbox" class="cb-parent"></td>
+            <td class="td-small">1</td>
+            <td><span class="td-name">Bundu Khan Restaurant</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">FT</div><div class="td-name">Fatima Tariq</div></div></td>
+            <td>fatima.tariq@email.com</td>
+            <td>+92 321 4445566</td>
+            <td class="td-small">12 Jun 2025</td>
+            <td><span class="status-badge pending">Pending</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn view" onclick="approveClaim(this)" style="background:rgba(217,119,6,0.1);border-color:#D97706;color:#D97706;" title="Approve"><i class="fas fa-check"></i> Approve</button>
+                <button class="action-btn delete" onclick="rejectClaim(this)" style="background:rgba(220,38,38,0.1);border-color:#DC2626;color:#DC2626;" title="Reject"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" onclick="viewClaim(this)" title="View Details"><i class="fas fa-eye"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr data-claim="Allied Hospital">
+            <td><input type="checkbox" class="cb-parent"></td>
+            <td class="td-small">2</td>
+            <td><span class="td-name">Allied Hospital</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">KI</div><div class="td-name">Kamran Iqbal</div></div></td>
+            <td>kamran.iqbal@email.com</td>
+            <td>+92 333 7778899</td>
+            <td class="td-small">18 Jun 2025</td>
+            <td><span class="status-badge pending">Pending</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn view" onclick="approveClaim(this)" style="background:rgba(217,119,6,0.1);border-color:#D97706;color:#D97706;" title="Approve"><i class="fas fa-check"></i> Approve</button>
+                <button class="action-btn delete" onclick="rejectClaim(this)" style="background:rgba(220,38,38,0.1);border-color:#DC2626;color:#DC2626;" title="Reject"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" onclick="viewClaim(this)" title="View Details"><i class="fas fa-eye"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr data-claim="TechloSet Solutions">
+            <td><input type="checkbox" class="cb-parent"></td>
+            <td class="td-small">3</td>
+            <td><span class="td-name">TechloSet Solutions</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">AH</div><div class="td-name">Ahmed Hassan</div></div></td>
+            <td>ahmed.hassan@email.com</td>
+            <td>+92 300 1112233</td>
+            <td class="td-small">25 Jun 2025</td>
+            <td><span class="status-badge verified">Approved</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn view" onclick="approveClaim(this)" style="background:rgba(217,119,6,0.1);border-color:#D97706;color:#D97706;" title="Approve"><i class="fas fa-check"></i> Approve</button>
+                <button class="action-btn delete" onclick="rejectClaim(this)" style="background:rgba(220,38,38,0.1);border-color:#DC2626;color:#DC2626;" title="Reject"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" onclick="viewClaim(this)" title="View Details"><i class="fas fa-eye"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr data-claim="The Mall Faisalabad">
+            <td><input type="checkbox" class="cb-parent"></td>
+            <td class="td-small">4</td>
+            <td><span class="td-name">The Mall Faisalabad</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">SR</div><div class="td-name">Sadia Rafiq</div></div></td>
+            <td>sadia.rafiq@email.com</td>
+            <td>+92 345 2223344</td>
+            <td class="td-small">02 Jul 2025</td>
+            <td><span class="status-badge pending">Pending</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn view" onclick="approveClaim(this)" style="background:rgba(217,119,6,0.1);border-color:#D97706;color:#D97706;" title="Approve"><i class="fas fa-check"></i> Approve</button>
+                <button class="action-btn delete" onclick="rejectClaim(this)" style="background:rgba(220,38,38,0.1);border-color:#DC2626;color:#DC2626;" title="Reject"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" onclick="viewClaim(this)" title="View Details"><i class="fas fa-eye"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr data-claim="Hotel One Faisalabad">
+            <td><input type="checkbox" class="cb-parent"></td>
+            <td class="td-small">5</td>
+            <td><span class="td-name">Hotel One Faisalabad</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">IA</div><div class="td-name">Imran Aslam</div></div></td>
+            <td>imran.aslam@email.com</td>
+            <td>+92 312 9988776</td>
+            <td class="td-small">10 Jul 2025</td>
+            <td><span class="status-badge suspended">Rejected</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn view" onclick="approveClaim(this)" style="background:rgba(217,119,6,0.1);border-color:#D97706;color:#D97706;" title="Approve"><i class="fas fa-check"></i> Approve</button>
+                <button class="action-btn delete" onclick="rejectClaim(this)" style="background:rgba(220,38,38,0.1);border-color:#DC2626;color:#DC2626;" title="Reject"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" onclick="viewClaim(this)" title="View Details"><i class="fas fa-eye"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr data-claim="Zameen.com - Faisalabad Office">
+            <td><input type="checkbox" class="cb-parent"></td>
+            <td class="td-small">6</td>
+            <td><span class="td-name">Zameen.com - Faisalabad Office</span></td>
+            <td><div class="user-cell"><div class="avatar-placeholder">NJ</div><div class="td-name">Nadia Javed</div></div></td>
+            <td>nadia.javed@email.com</td>
+            <td>+92 301 5544332</td>
+            <td class="td-small">18 Jul 2025</td>
+            <td><span class="status-badge pending">Pending</span></td>
+            <td>
+              <div class="action-btn-group">
+                <button class="action-btn view" onclick="approveClaim(this)" style="background:rgba(217,119,6,0.1);border-color:#D97706;color:#D97706;" title="Approve"><i class="fas fa-check"></i> Approve</button>
+                <button class="action-btn delete" onclick="rejectClaim(this)" style="background:rgba(220,38,38,0.1);border-color:#DC2626;color:#DC2626;" title="Reject"><i class="fas fa-times"></i></button>
+                <button class="action-btn view" onclick="viewClaim(this)" title="View Details"><i class="fas fa-eye"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div id="preloader" style="position:fixed;inset:0;z-index:999999;background:#FAFAF9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;transition:opacity 0.4s;">
+  <div style="width:36px;height:36px;border:3px solid #E7E5E4;border-top-color:#D97706;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+  <span style="font-size:0.82rem;color:#78716C;font-family:'Inter',sans-serif;">Loading...</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/admin.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  setTimeout(function () {
+    const p = document.getElementById('preloader');
+    if (p) { p.style.opacity = '0'; setTimeout(function () { p.style.display = 'none'; }, 400); }
+  }, 400);
+
+  function filterClaims() {
+    const q = document.getElementById('claimSearch').value.toLowerCase().trim();
+    const st = document.getElementById('claimStatusFilter').value;
+    document.querySelectorAll('#claimsTableBody tr').forEach(function (row) {
+      const name = row.getAttribute('data-claim').toLowerCase();
+      const sBadge = row.querySelector('td:nth-child(8) .status-badge');
+      const matchName = !q || name.includes(q);
+      const matchStatus = !st || (sBadge && sBadge.textContent.trim() === st);
+      row.style.display = (matchName && matchStatus) ? '' : 'none';
+    });
+  }
+
+  document.getElementById('claimSearch').addEventListener('input', filterClaims);
+  document.getElementById('claimStatusFilter').addEventListener('change', filterClaims);
+});
+
+function approveClaim(btn) {
+  const row = btn.closest('tr');
+  const name = row.getAttribute('data-claim');
+  const sBadge = row.querySelector('td:nth-child(8) .status-badge');
+  if (sBadge) {
+    sBadge.className = 'status-badge verified';
+    sBadge.textContent = 'Approved';
+  }
+  showAdminToast('success', 'Claim Approved', 'Ownership of "' + name + '" has been approved.');
+}
+
+function rejectClaim(btn) {
+  const row = btn.closest('tr');
+  const name = row.getAttribute('data-claim');
+  const sBadge = row.querySelector('td:nth-child(8) .status-badge');
+  if (sBadge) {
+    sBadge.className = 'status-badge suspended';
+    sBadge.textContent = 'Rejected';
+  }
+  showAdminToast('error', 'Claim Rejected', 'Ownership claim for "' + name + '" has been rejected.');
+}
+
+function viewClaim(btn) {
+  const row = btn.closest('tr');
+  const name = row.getAttribute('data-claim');
+  openAdminModal({
+    title: 'Claim Details - ' + name,
+    body: '<div style="font-size:0.82rem;color:#57534E;">' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">' +
+        '<div><strong style="display:block;font-size:0.75rem;color:#78716C;text-transform:uppercase;letter-spacing:0.5px;">Business</strong><span style="color:#1C1917;font-weight:500;">' + name + '</span></div>' +
+        '<div><strong style="display:block;font-size:0.75rem;color:#78716C;text-transform:uppercase;letter-spacing:0.5px;">Claimant</strong><span style="color:#1C1917;font-weight:500;">' + row.querySelector('td:nth-child(4) .td-name').textContent + '</span></div>' +
+        '<div><strong style="display:block;font-size:0.75rem;color:#78716C;text-transform:uppercase;letter-spacing:0.5px;">Email</strong><span>' + row.querySelector('td:nth-child(5)').textContent.trim() + '</span></div>' +
+        '<div><strong style="display:block;font-size:0.75rem;color:#78716C;text-transform:uppercase;letter-spacing:0.5px;">Phone</strong><span>' + row.querySelector('td:nth-child(6)').textContent.trim() + '</span></div>' +
+      '</div>' +
+      '<div style="padding:12px;background:#FAFAF9;border-radius:8px;border:1px solid #E7E5E4;">' +
+        '<p style="margin:0 0 4px;font-size:0.78rem;color:#78716C;"><strong style="color:#57534E;">Documents:</strong> ID Card, Business Registration Certificate</p>' +
+        '<p style="margin:0;font-size:0.78rem;color:#78716C;"><strong style="color:#57534E;">Notes:</strong> Claimant provided valid business registration documents.</p>' +
+      '</div>' +
+    '</div>',
+    buttons: '<button onclick="document.querySelector(\'.modal-admin-close\').click()" style="border:1px solid #E7E5E4;color:#57534E;padding:8px 20px;font-size:0.82rem;border-radius:8px;background:#fff;cursor:pointer;">Close</button>'
+  });
+}
+</script>
+</body>
+</html>
